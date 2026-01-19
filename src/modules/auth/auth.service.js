@@ -1,5 +1,5 @@
-import { generateToken } from "../../config/jwt";
-import { User } from "../user/user.model";
+import { generateToken } from "../../config/jwt.js";
+import { User } from "../user/user.model.js";
 import bcrypt from "bcrypt";
 
 const registerUser = async (data) => {
@@ -8,6 +8,8 @@ const registerUser = async (data) => {
   if (userExists) throw new Error("User already exits");
 
   const user = await User.create(data);
+  //   const user = new User(data);
+  //   await user.save();
   return user;
 };
 
