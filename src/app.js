@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
+import ProductRoutes from "./modules/product/product.route.js";
 
 const app = express();
 
@@ -11,6 +12,10 @@ connectDB();
 // middleware
 app.use(cors());
 app.use(express.json());
+
+// routes
+app.use("/api/products", ProductRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
